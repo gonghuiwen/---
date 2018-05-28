@@ -1,0 +1,101 @@
+import tkinter as tk
+from tkinter import Button
+from math import *
+
+bbb = 0
+
+window = tk.Tk()
+window.title('计算器')
+window.geometry('400x400')
+
+display=tk.StringVar()
+
+a1 = tk.Entry(width=30,textvariable=display)
+a1.grid(row=0, columnspan=100)
+
+
+def xianshi(a):
+    display.set(display.get()+a)
+def qingkong():
+    display.set("")
+def jieguo():
+    display.set(eval(display.get()))
+def huitui():
+    display.set(display.get()[0:-1])
+def kexue():
+    global bbb,bu22,bu23,bu24,bu25,bu26,bu27,bu28,bu29
+    if 0 == bbb:
+        bu22 = tk.Button(window, text='pi', width=4, height=2, command=lambda: xianshi('pi'))
+        bu22.grid(row=2, column=4)
+        bu23 = tk.Button(window, text='sin', width=4, height=2, command=lambda: xianshi('sin'))
+        bu23.grid(row=2, column=5)
+        bu24 = tk.Button(window, text='cos', width=4, height=2, command=lambda: xianshi('cos'))
+        bu24.grid(row=3, column=4)
+        bu25 = tk.Button(window, text='tan', width=4, height=2, command=lambda: xianshi('tan'))
+        bu25.grid(row=3, column=5)
+        bu26 = tk.Button(window, text='x²', width=4, height=2, command=lambda: xianshi('**2'))
+        bu26.grid(row=4, column=4)
+        bu27 = tk.Button(window, text='ln', width=4, height=2, command=lambda: xianshi('log'))
+        bu27.grid(row=4, column=5)
+        bu28 = tk.Button(window, text='sqrt', width=4, height=2, command=lambda: xianshi('sqrt'))
+        bu28.grid(row=5, column=4)
+        bu29 = tk.Button(window, text='exp', width=4, height=2, command=lambda: xianshi('exp'))
+        bu29.grid(row=5, column=5)
+        bbb = 1
+    else:
+        bu22.destroy()
+        bu23.destroy()
+        bu24.destroy()
+        bu25.destroy()
+        bu26.destroy()
+        bu27.destroy()
+        bu28.destroy()
+        bu29.destroy()
+        bbb = 0
+bu1 = tk.Button(window, text='A/C', width=4, height=2, bg='#E6E6FA',command=lambda :qingkong())
+bu1.grid(row=1, column=0)
+bu2 = tk.Button(window, text='回退', width=4, height=2, bg='#E6E6FA',command=lambda:huitui())
+bu2.grid(row=1, column=1)
+bu3 = tk.Button(window, text='%', width=4, height=2, bg='#E6E6FA',command=lambda :xianshi('%'))
+bu3.grid(row=1, column=2)
+bu4 = tk.Button(window, text='/',width=4, height=2, bg='#E6E6FA',command=lambda :xianshi('/'))
+bu4.grid(row=1, column=3)
+bu5 = tk.Button(window,text='7',width=4,height=2,bg='#DCDCDC',command=lambda :xianshi('7'))
+bu5.grid(row=2,column=0)
+bu6 = tk.Button(window,text='8',width=4,height=2,bg='#DCDCDC',command=lambda :xianshi('8'))
+bu6.grid(row=2,column=1)
+bu7 = tk.Button(window,text='9',width=4,height=2,bg='#DCDCDC',command=lambda :xianshi('9'))
+bu7.grid(row=2,column=2)
+bu8 = tk.Button(window,text='X',width=4,height=2,bg='#FFFF00',command=lambda :xianshi('*'))
+bu8.grid(row=2,column=3)
+bu9 = tk.Button(window,text='4',width=4,height=2,bg='#DCDCDC',command=lambda :xianshi('4'))
+bu9.grid(row=3,column=0)
+bu10 = tk.Button(window,text='5',width=4,height=2,bg='#DCDCDC',command=lambda :xianshi('5'))
+bu10.grid(row=3,column=1)
+bu11 = tk.Button(window,text='6',width=4,height=2,bg='#DCDCDC',command=lambda :xianshi('6'))
+bu11.grid(row=3,column=2)
+bu12 = tk.Button(window,text='-',width=4,height=2,bg='#FFFF00',command=lambda :xianshi('-'))
+bu12.grid(row=3,column=3)
+bu13 = tk.Button(window,text='1',width=4,height=2,bg='#DCDCDC',command=lambda :xianshi('1'))
+bu13.grid(row=4,column=0)
+bu14 = tk.Button(window,text='2',width=4,height=2,bg='#DCDCDC',command=lambda :xianshi('2'))
+bu14.grid(row=4,column=1)
+bu15 = tk.Button(window,text='3',width=4,height=2,bg='#DCDCDC',command=lambda :xianshi('3'))
+bu15.grid(row=4,column=2)
+bu16 = tk.Button(window,text='+',width=4,height=2,bg='#FFFF00',command=lambda :xianshi('+'))
+bu16.grid(row=4,column=3)
+bu17 = tk.Button(window,text='0',width=9,height=2,bg='#DCDCDC',command=lambda :xianshi('0'))
+bu17.grid(row=5,columnspan=100,sticky=tk.W)
+bu18 = tk.Button(window,text='.',width=4,height=2,bg='#DCDCDC',command=lambda :xianshi('.'))
+bu18.grid(row=5,column=2)
+bu19 = tk.Button(window,text='=',width=4,height=2,bg='#FFFF00',command=lambda:jieguo())
+bu19.grid(row=5,column=3)
+bu20 = Button(window,text='(',width=4,height=2,command=lambda :xianshi('('))
+bu20.grid(row=1,column=4)
+bu21 = Button(window,text=')',width=4,height=2,command=lambda :xianshi(')'))
+bu21.grid(row=1,column=5)
+
+bu30 = Button(window,text='科学计算器',width=19,height=1,bg='#B2BABB',command=lambda:kexue())
+bu30.grid(row=6,columnspan=100,sticky=tk.W)
+
+window.mainloop()
